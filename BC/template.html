@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+/* CSS */
+body {
+    font-size: .9em;
+    margin: .8em;
+    font-family: arial, sans-serif;
+}
+table {
+    border-collapse: collapse;
+}
+td, th {
+    text-align: left;
+    padding: 10px;
+}
+th {
+    background-color: #2471A3;
+    color: white;
+    font-weight: normal;
+}
+tr:nth-child(odd) {
+    background-color: #F2F2F2;
+}
+tr:hover {
+    background-color: #D6EAF8;
+}
+.summary {
+    line-height: 1.2em;
+}
+.verified {
+    font-weight: bold;
+}
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
+.azure {
+    background-color: azure;
+}
+.lavenderblush {
+    background-color: lavenderblush;
+}
+.mediumspringgreen {
+    background-color: mediumspringgreen;
+}
+.moccasin {
+    background-color: moccasin;
+}
+.x-scrollable {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.latex-code {
+    padding: .5em;
+    font-family: Consolas, "courier new";
+    background-color: #F2F2F2;
+}
+a:link { 
+    color: blue; 
+    text-decoration: none; 
+} 
+a:visited { 
+    color: blue; 
+    text-decoration: none; 
+} 
+a:hover { 
+    color: red; 
+    text-decoration: underline; 
+}
+</style>
+</head>
+
+<body>
+
+<h2>Analysis Results</h2>
+
+<div class="x-scrollable">
+<table>
+<!-- <tr> -->
+<!--     <th>No.</th> -->
+<!--     <th>Theory</th> -->
+<!--     <th>executability</th> -->
+<!--     <th>Non_inject_agreement_InitD_ResD_DHKey</th> -->
+<!--     <th>NotJW_Non_inject_agreement_InitD_ResD_DHKey</th> -->
+<!--     <th>Non_inject_agreement_ResD_InitD_DHKey</th> -->
+<!--     <th>NotJW_Non_inject_agreement_ResD_InitD_DHKey</th> -->
+<!--     <th>Secret</th> -->
+<!--     <th>test</th> -->
+<!--     <th>Time</th> -->
+<!-- </tr> -->
+<tr>
+    {% for key in theories[0] %}
+        {% if key not in ['lemmas', 'ClassColor'] %}
+    <th>{{key}}</th>
+        {% elif key == 'lemmas' %}
+        {% for lemma in theories[0].get(key) %}
+            {% if lemma == 'executability' %}
+    <th>{{lemma}} (exist a trace)</th>
+            {% else %}
+    <th>{{lemma}} (all traces)</th>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+    {% endfor %}
+</tr>
+
+{% for theory in theories %}
+<tr>
+    <td>{{theory.No}}</td>
+    <td class="{{theory.ClassColor}}">{{theory.Class}}</td>
+    <td>{{theory.Name}}</td>
+    {% for lemma in theory.lemmas %}
+        {% if 'graph' in theory.lemmas.get(lemma) %}
+    <td class="{{theory.lemmas.get(lemma).color}}">
+        {{theory.lemmas.get(lemma).result}}
+        <a href='{{theory.lemmas.get(lemma).graph}}' target="_blank">▶</a>
+    </td>
+        {% else %}
+    <td class="{{theory.lemmas.get(lemma).color}}">{{theory.lemmas.get(lemma).result}}</td>
+        {% endif %}
+    {% endfor %}
+    <td>{{theory.Time}}</td>
+</tr>
+{% endfor %}
+
+</table>
+</div>
+
+</body>
+</html>

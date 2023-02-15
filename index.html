@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        a:link,
+        a:hover,
+        a:visited {
+            color: blue;
+        }
+
+        pre code {
+            background-color: #eee;
+            border: 1px solid #999;
+            display: block;
+            /* padding: 5px; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>A Formal Analysis and Patching of BLE-SC Pairing</h1>
+    On this page, we provide links to our analysis results.
+    We detail how to reproduce our results.
+
+    <h2>Analysis Results</h2>
+    <div>
+        <li><a href="./BLE/BLEResults/Unfixed/results.html">BLE-SC Unfixed:</a> analysis results for the Bluetooth Low
+            Energy Secure Connection (BLE-SC) pairing protocol in Bluetooth Specification V5.3.</li>
+        <li><a href="./BLE/BLEResults/Fixed/results.html">BLE-SC Fixed:</a> analysis results for our countermeasure.
+        </li>
+    </div>
+
+    <hr>
+
+    <div>
+        <li><a href="./BC/BCResults/results.html">SSP-SC:</a> analysis results for the Secure Simple Pairing with Secure
+            Connections (SSP-SC).</li>
+    </div>
+
+
+    <h3>Analysis BLE-SC pairing protocol in Bluetooth Specification V5.3:</h3>
+    Ensure you are in the 'BLE' directory, change the variable 'File' in Makefile.m4 to 'BLE_SC_PAIRING.m4', and change
+    the variable 'Dir' to 'BLEResults/Unfixed'.
+    Execute the following commands step-by-step:
+    <pre>
+    <code>
+    $ m4 Makefile.m4 > Makefile
+    $ make ALL # This command will take a long time, depending on your server performance.
+    $ python rescrawler.py [ResultFolder] # Download graphs for all model under the chosed folder. This command will take a long time, depending on your server performance.
+    $ python collect.py [ResultFolder]  # Collect proving results in to a html.
+    </code>
+</pre>
+
+    <h3>Analysis Our countermeasure:</h3>
+    Change the variable 'File' in Makefile.m4 to 'BLE_SC_PAIRING_PATCH.m4', and change the variable 'Dir' to
+    'BLEResults/Fixed'.
+    Execute the above commands, except the second command change to 'make NCPE'.
+
+    <h3>Analysis SSP-SC pairing protocol</h3>
+    Change your working directory to 'BC', and execute the above commands.
+
+
+
+</body>
+
+</html>
