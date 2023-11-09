@@ -3,6 +3,10 @@
 This project presents symbolic models and results of our paper "Formal Analysis and Patching of BLE-SC Pairing" published at USENIX Security '23.
 The symbolic models for the Bluetooth Low Energy Secure Connections (BLE-SC) pairing protocol are developed using the Tamarin Prover and cover all association models, including Numeric Comparison (NC), Passkey Entry (PE), Out of Band (OOB), and Just Works (JW), as well as all phases of the protocol, including Pairing Feature Exchange, Long Term Key (LTK) Generation, and Transport Specific Key Distribution.
 
+[Results Page](https://luojiazhishu.github.io/BLE-SC-Pairing-Model/)
+
+[Response of Bluetooth SIG](https://luojiazhishu.github.io/BLE-SC-Pairing-Model/)
+
 ## Requirements
 To reproduce the results of this project, you will need:
 - Tamarin Prover (version 1.6.0) [Installation](https://tamarin-prover.github.io/manual/book/002_installation.html)
