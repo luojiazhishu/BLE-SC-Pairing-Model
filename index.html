@@ -28,11 +28,7 @@
     <h2>Analysis Results</h2>
     <div>
         <li><a href="./BLE/BLEResults/Unfixed/results.html">BLE-SC Unfixed:</a> analysis results for the Bluetooth Low
-            Energy Secure Connection (BLE-SC) pairing protocol in Bluetooth Specification V5.3.</li>
-        <li>
-            <em>
-                Our model is also a formal model of the latest Bluetooth Specification V5.4.
-            </em>
+            Energy Secure Connection (BLE-SC) pairing protocol in Bluetooth Specification V5.3.
         </li>
         <li><a href="./BLE/BLEResults/Fixed/results.html">BLE-SC Fixed:</a> analysis results for our countermeasure.
         </li>
@@ -58,7 +54,11 @@
     $ python collect.py [ResultFolder]  # Collect proving results in to a html.
     </code>
     </pre>
-
+    <p> <em>
+            Our model is also a formal model of the latest Bluetooth Specification V5.4.
+        </em>
+    </p>
+           
     <h3>Analysis Our countermeasure:</h3>
     Change the variable 'File' in Makefile.m4 to 'BLE_SC_PAIRING_PATCH.m4', and change the variable 'Dir' to
     'BLEResults/Fixed'.
